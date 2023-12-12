@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Positioned(top: 80, child: _buildTop()),
+          Positioned(top: 25, child: _buildTop()),
           Positioned(bottom: 0, child: _buildBottom()),
         ],
       ),
@@ -37,7 +37,6 @@ class _LoginPageState extends State<LoginPage> {
     return SizedBox(
       width: mediaSize.width,
       child: const Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Image(
             image: AssetImage('assets/images/logo.png'),
@@ -84,9 +83,9 @@ class _LoginPageState extends State<LoginPage> {
         _buildRememberUser(),
         const SizedBox(height: 20),
         _buildLoginButton(),
-        const SizedBox(height: 60),
-        _buildGoogleLogin(),
-        const SizedBox(height: 45),
+        const SizedBox(height: 30),
+        // _buildGoogleLogin(),
+        // const SizedBox(height: 45),
       ],
     );
   }
@@ -198,21 +197,21 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildGoogleLogin() {
-    return Center(
-      child: Column(
-        children: [
-          _buildWhiteText("Atau Login dengan"),
-          const SizedBox(height: 30),
-          Tab(
-            icon: ClipOval(
-              child: Image.asset(
-                "assets/images/logo-google.png",
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _buildGoogleLogin() {
+  //   return Center(
+  //     child: Column(
+  //       children: [
+  //         _buildWhiteText("Atau Login dengan"),
+  //         const SizedBox(height: 30),
+  //         Tab(
+  //           icon: ClipOval(
+  //             child: Image.asset(
+  //               "assets/images/logo-google.png",
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

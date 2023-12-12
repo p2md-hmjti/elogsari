@@ -4,5 +4,5 @@ class ApiEndPoints {
 }
 
 class _AuthEndPoints {
-  final String loginEmail = 'login';
+  final String login = 'login';
 }

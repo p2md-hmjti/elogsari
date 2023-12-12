@@ -1,3 +1,5 @@
+import 'package:elogsari_mobile/views/auth/reset_password.dart';
+import 'package:elogsari_mobile/views/product/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -59,12 +61,16 @@ class _DashboardState extends State<Dashboard> {
             ListTile(
               title: const Text('Produk'),
               leading: const Icon(Icons.add_circle),
-              onTap: () {},
+              onTap: () {
+                Get.to(ProductView());
+              },
             ),
             ListTile(
               title: const Text('Update Password'),
               leading: const Icon(Icons.lock_open),
-              onTap: () {},
+              onTap: () {
+                Get.to(ResetPassword());
+              },
             ),
             ListTile(
               title: const Text('Logout'),
