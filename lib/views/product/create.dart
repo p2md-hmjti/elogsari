@@ -1,29 +1,18 @@
 import 'package:elogsari_mobile/views/product/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import '/controllers/product_form_controller.dart';
+import '/controllers/create_product_controller.dart';
 // import 'dart:io';
 // import 'package:image_picker/image_picker.dart';
 
-class ProductForm extends StatefulWidget {
-  const ProductForm({super.key});
+class CreateProduct extends StatefulWidget {
+  const CreateProduct({super.key});
 
   @override
-  State<ProductForm> createState() => ProductFormController();
+  State<CreateProduct> createState() => CreateProductController();
 
-  Widget build(context, ProductFormController controller) {
+  Widget build(context, CreateProductController controller) {
     controller.view = this;
-
-    // FileImage? image;
-
-    // Future getImageGallery() async {
-    //   var imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-    //   setState(() {
-    //     image = imageFile;
-    //   });
-    // }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -31,7 +20,7 @@ class ProductForm extends StatefulWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Get.to(ProductView());
+            //Get.to(ProductView());
           },
         ),
         title: const Text(

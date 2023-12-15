@@ -1,8 +1,8 @@
 class ApiEndPoints {
-  static final String baseUrl = 'http://127.0.0.1:8000/api/';
-  static _AuthEndPoints authEndpoints = _AuthEndPoints();
+  static String baseUrl = 'http://127.0.0.1:8000/api/';
+  static AuthEndPoints authEndpoints = AuthEndPoints();
 }
 
-class _AuthEndPoints {
+class AuthEndPoints {
   final String login = 'login';
 }

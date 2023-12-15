@@ -1,4 +1,4 @@
-import 'package:elogsari_mobile/views/auth/reset_password.dart';
+import 'package:elogsari_mobile/views/product/create_view.dart';
 import 'package:elogsari_mobile/views/product/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,14 +62,14 @@ class _DashboardState extends State<Dashboard> {
               title: const Text('Produk'),
               leading: const Icon(Icons.add_circle),
               onTap: () {
-                Get.to(ProductView());
+                Get.to(CreateProductView());
               },
             ),
             ListTile(
               title: const Text('Update Password'),
               leading: const Icon(Icons.lock_open),
               onTap: () {
-                Get.to(ResetPassword());
+                // Get.to(ResetPassword());
               },
             ),
             ListTile(

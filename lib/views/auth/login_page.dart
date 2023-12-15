@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Positioned(top: 25, child: _buildTop()),
+          Positioned(top: 15, child: _buildTop()),
           Positioned(bottom: 0, child: _buildBottom()),
         ],
       ),

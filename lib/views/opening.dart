@@ -31,7 +31,7 @@ class Opening extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        '"E-LOGSARI"',
+                        '"ELOGSARI"',
                         style: TextStyle(
                           color: Colors.green,
                           fontSize: 40.0,

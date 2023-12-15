@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:elogsari_mobile/views/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,21 +29,22 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
+
         if (json['status'] == true) {
+          var id = json['data']['id'];
           var token = json['data']['token'];
 
           final SharedPreferences prefs = await _prefs;
+          await prefs.setInt('id', id);
           await prefs.setString('token', token);
 
-          emailController.clear();
-          passwordController.clear();
+          // emailController.clear();
+          // passwordController.clear();
 
           Get.off(const Dashboard());
         } else if (json['status'] == false) {
           throw jsonDecode(response.body)['message'];
         }
-      } else {
-        throw jsonDecode(response.body)['message'] ?? "Error Tidak Diketahui";
       }
     } catch (error) {
       Get.back();

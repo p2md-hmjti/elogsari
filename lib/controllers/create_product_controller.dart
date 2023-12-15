@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import '/views/product/create.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProductFormController extends State<ProductForm> {
-  static late ProductFormController instance;
-  late ProductForm view;
+class CreateProductController extends State<CreateProduct> {
+  static late CreateProductController instance;
+  late CreateProduct view;
 
   late List<String> categories;
 
