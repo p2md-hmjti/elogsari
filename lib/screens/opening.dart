@@ -1,4 +1,4 @@
-import 'auth/login_page.dart';
+import 'auth/login.dart';
 import 'package:flutter/material.dart';
 
 class Opening extends StatelessWidget {
@@ -67,10 +67,14 @@ class Opening extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 35.0),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) {
-                return const LoginPage();
-              }));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Login();
+                  },
+                ),
+              );
             },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(16.0),

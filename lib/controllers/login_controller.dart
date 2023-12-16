@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:elogsari_mobile/views/dashboard.dart';
+import 'package:elogsari_mobile/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -38,8 +38,8 @@ class LoginController extends GetxController {
           await prefs.setInt('id', id);
           await prefs.setString('token', token);
 
-          // emailController.clear();
-          // passwordController.clear();
+          emailController.clear();
+          passwordController.clear();
 
           Get.off(const Dashboard());
         } else if (json['status'] == false) {

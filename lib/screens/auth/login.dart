@@ -1,23 +1,47 @@
+import '/models/api_response.dart';
+import '/models/user.dart';
+import '/services/user_service.dart';
 import 'package:flutter/material.dart';
-import '/controllers/login_controller.dart';
-import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '/screens/dashboard.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Login extends StatefulWidget {
+  // const Login({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  _LoginState createState() => _LoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginState extends State<Login> {
   late Size mediaSize;
 
-  LoginController loginController = Get.put(LoginController());
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   bool rememberUser = false;
   bool showPassword = false;
 
-  final _formKey = GlobalKey<FormState>();
+  void _login() async {
+    ApiResponse response = await login(email.text, password.text);
+    if (response.error == null) {
+      _dashboard(response.data as User);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${response.error}'),
+        ),
+      );
+    }
+  }
+
+  void _dashboard(User user) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString('token', user.token ?? '');
+    await pref.setInt('userId', user.id ?? 0);
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => Dashboard()), (route) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,12 +128,10 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFormField(
-            controller: loginController.emailController,
-            validator: (value) {
-              if (value == '') {
-                return 'Email tidak boleh kosong';
-              }
-            },
+            keyboardType: TextInputType.emailAddress,
+            controller: email,
+            validator: (value) =>
+                value == '' ? 'Email tidak boleh kosong' : null,
             decoration: const InputDecoration(
               prefixIcon: Icon(
                 Icons.email,
@@ -120,12 +142,9 @@ class _LoginPageState extends State<LoginPage> {
           ),
           const SizedBox(height: 10.0),
           TextFormField(
-            controller: loginController.passwordController,
-            validator: (value) {
-              if (value == '') {
-                return 'Password tidak boleh kosong';
-              }
-            },
+            controller: password,
+            validator: (value) =>
+                value == '' ? 'Password tidak boleh kosong' : null,
             obscureText: !showPassword,
             decoration: InputDecoration(
               hintText: 'Password',
@@ -177,8 +196,12 @@ class _LoginPageState extends State<LoginPage> {
     return ElevatedButton(
       onPressed: () {
         if (_formKey.currentState!.validate()) {
-          loginController.login();
-        } else {}
+          setState(
+            () {
+              _login();
+            },
+          );
+        }
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),

@@ -1,9 +1,8 @@
-import 'package:elogsari_mobile/views/product/create_view.dart';
-import 'package:elogsari_mobile/views/product/index.dart';
+import 'package:elogsari_mobile/screens/products/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'auth/login_page.dart';
+import 'auth/login.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -62,7 +61,7 @@ class _DashboardState extends State<Dashboard> {
               title: const Text('Produk'),
               leading: const Icon(Icons.add_circle),
               onTap: () {
-                Get.to(CreateProductView());
+                Get.to(ProductScreen());
               },
             ),
             ListTile(
@@ -78,7 +77,7 @@ class _DashboardState extends State<Dashboard> {
               onTap: () async {
                 final SharedPreferences prefs = await _prefs;
                 prefs.clear();
-                Get.offAll(const LoginPage());
+                Get.offAll(Login());
               },
             ),
           ],
